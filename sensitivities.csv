@@ -1,0 +1,7 @@
+scenario,own funds (EUR m),SCR (EUR m),solvency ratio
+Base,76.7,43.9,175%
+Symmetric adjustment -10%,76.7,40.8,188%
+Symmetric adjustment +10%,76.7,47.1,163%
+20% of type 1 equity moved to type 2,76.7,44.2,173%
+Risk-free rates -100bp,73.9,48.5,152%
+Term assurance book doubled,83.7,45.7,183%
