@@ -16,6 +16,16 @@ python data/generate.py     # creates the synthetic policies, annuitants and bon
 python report.py            # prints the results, saves output/ tables and chart
 python -m pytest -q         # sanity checks
 ```
+## Run it on Databricks
+
+1. Workspace → Create → Git folder, and paste this repository's URL.
+2. Open the `run_scr` notebook (top level of the folder) and attach serverless compute.
+3. Run all. The notebook runs the calculation, shows the results, sensitivities
+   and waterfall chart, and saves two Delta tables:
+   - `workspace.default.scr_buildup`: module-by-module SCR build-up
+   - `workspace.default.scr_sensitivities`: solvency ratio under each what-if
+
+Query them with SQL, e.g. `SELECT * FROM workspace.default.scr_sensitivities`.
 
 ## Base results (EUR m)
 
