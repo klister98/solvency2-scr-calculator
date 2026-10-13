@@ -16,14 +16,6 @@ python data/generate.py     # creates the synthetic policies, annuitants and bon
 python report.py            # prints the results, saves output/ tables and chart
 python -m pytest -q         # sanity checks
 ```
-## Run it on Databricks
-
-1. Workspace → Create → Git folder, and paste this repository's URL.
-2. Open the `run_scr` notebook (top level of the folder) and attach serverless compute.
-3. Run all. The notebook runs the calculation, shows the results, sensitivities
-   and waterfall chart, and saves two Delta tables:
-   - `workspace.default.scr_buildup`: module-by-module SCR build-up
-   - `workspace.default.scr_sensitivities`: solvency ratio under each what-if
 
 Query them with SQL, e.g. `SELECT * FROM workspace.default.scr_sensitivities`.
 
@@ -94,14 +86,15 @@ reference in Delegated Regulation (EU) 2015/35.
 
 ## Simplifications and next steps
 
-- **Parameters to verify.** Values were entered from the regulation's
+- **Parameters to verify.** 
+- Values were entered from the regulation's
   structure and should be checked against the official consolidated text,
   especially the interest rate shocks (recalibrated in the 2024/2025 review,
   phased in) and the spread factor bands.
 - Risk margin is an input and is not recalculated under shocks (cost of capital
   falls from 6% to 4.75% from 2027).
 - No loss-absorbing capacity of technical provisions or deferred taxes.
-- Flat-extrapolated synthetic curve, no Smith-Wilson / UFR extrapolation, no
+- Flat-extrapolated synthetic curve, no UFR extrapolation, no
   volatility or matching adjustment.
 - Not modelled: currency and concentration risk, type 1 counterparty exposures,
   look-through, health and non-life risk, disability and revision risk.

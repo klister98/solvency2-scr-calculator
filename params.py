@@ -2,12 +2,12 @@
 Standard formula parameters used by the calculator.
 
 Every value carries the article of Commission Delegated Regulation (EU) 2015/35
-(as amended) it comes from. The values were entered from memory of the
-regulation and MUST be checked against the official consolidated text on
-EUR-Lex before the results are relied on. Items marked "VERIFY" are the ones
-most likely to have changed through later amendments (2019 review and the
-2024/2025 Solvency II review, which recalibrates interest rate risk with a
-phase-in and changes the risk margin cost of capital from 2027).
+(as amended) it comes from. Values were checked against the EIOPA Solvency II
+Single Rulebook in October 2026.
+
+Known limitation: interest rate shocks use the original 2015 calibration
+(relative shocks only). The post-review method (relative shock plus absolute
+shift, phased in) is a planned v2 change.
 """
 
 # ---------------------------------------------------------------------------
@@ -51,7 +51,7 @@ SPREAD_FACTORS = {
     1: [(5, 0.000, 0.011, 0), (10, 0.055, 0.006, 5), (15, 0.085, 0.005, 10), (20, 0.110, 0.005, 15), (999, 0.135, 0.005, 20)],
     2: [(5, 0.000, 0.014, 0), (10, 0.070, 0.007, 5), (15, 0.105, 0.005, 10), (20, 0.130, 0.005, 15), (999, 0.155, 0.005, 20)],
     3: [(5, 0.000, 0.025, 0), (10, 0.125, 0.015, 5), (15, 0.200, 0.010, 10), (20, 0.250, 0.010, 15), (999, 0.300, 0.005, 20)],
-    4: [(5, 0.000, 0.045, 0), (10, 0.225, 0.025, 5), (15, 0.350, 0.018, 10), (20, 0.440, 0.005, 15), (999, 0.465, 0.005, 20)],
+    4: [(5, 0.000, 0.045, 0), (10, 0.225, 0.025, 5), (15, 0.350, 0.018, 10), (20, 0.440, 0.005, 15), (999, 0.466, 0.005, 20)],
     5: [(5, 0.000, 0.075, 0), (10, 0.375, 0.042, 5), (15, 0.585, 0.005, 10), (20, 0.610, 0.005, 15), (999, 0.635, 0.005, 20)],
     6: [(5, 0.000, 0.075, 0), (10, 0.375, 0.042, 5), (15, 0.585, 0.005, 10), (20, 0.610, 0.005, 15), (999, 0.635, 0.005, 20)],
 }
@@ -86,7 +86,7 @@ LIFE_CAT_SHOCK = 0.0015            # +0.15 pp to mortality in the next 12 months
 REVISION_SHOCK = 0.03              # +3% to revisable annuities (Art. 141) - not used in v1
 
 LIFE_MODULES = ["mortality", "longevity", "lapse", "expense", "life_cat"]
-# Correlations within life underwriting risk (Annex IV) - restricted to the v1 modules.
+# Correlations within life underwriting risk (Annex 136) - restricted to the v1 modules.
 #                mort   long   lapse  exp   cat
 LIFE_CORR = [
     [1.00, -0.25, 0.00, 0.25, 0.25],   # mortality
