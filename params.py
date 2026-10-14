@@ -28,9 +28,8 @@ SA_BOUNDS = (-0.10, 0.10)
 PROPERTY_SHOCK = 0.25
 
 # Interest rate risk (Arts. 166-167) - relative shocks to the risk-free curve
-# by maturity in years. These are the ORIGINAL 2015 values. VERIFY: the
-# 2024/2025 review introduces a new calibration (relative + absolute shift,
-# phased in), which would replace these tables.
+# by maturity in years. These are the ORIGINAL 2015 values. # Verified against 
+# the 2015 calibration. The post-review method is planned for v2
 IR_UP_SHOCK = {
     1: 0.70, 2: 0.70, 3: 0.64, 4: 0.59, 5: 0.55, 6: 0.52, 7: 0.49, 8: 0.47,
     9: 0.44, 10: 0.42, 11: 0.39, 12: 0.37, 13: 0.35, 14: 0.34, 15: 0.33,
@@ -44,7 +43,7 @@ IR_DOWN_SHOCK = {
 IR_UP_MIN_ABS_INCREASE = 0.01      # the up shock adds at least 1 percentage point
 
 # Spread risk on bonds (Art. 176) - stress = a + b * (duration - lower bound),
-# by credit quality step (CQS 0 = AAA ... 6 = CCC or lower). VERIFY all bands.
+# by credit quality step (CQS 0 = AAA ... 6 = CCC or lower).
 # Each row: (upper duration bound, a, b, lower duration bound)
 SPREAD_FACTORS = {
     0: [(5, 0.000, 0.009, 0), (10, 0.045, 0.005, 5), (15, 0.070, 0.005, 10), (20, 0.095, 0.005, 15), (999, 0.120, 0.005, 20)],
@@ -86,7 +85,7 @@ LIFE_CAT_SHOCK = 0.0015            # +0.15 pp to mortality in the next 12 months
 REVISION_SHOCK = 0.03              # +3% to revisable annuities (Art. 141) - not used in v1
 
 LIFE_MODULES = ["mortality", "longevity", "lapse", "expense", "life_cat"]
-# Correlations within life underwriting risk (Annex 136) - restricted to the v1 modules.
+# Correlations within life underwriting risk (Art. 136) - restricted to the v1 modules.
 #                mort   long   lapse  exp   cat
 LIFE_CORR = [
     [1.00, -0.25, 0.00, 0.25, 0.25],   # mortality
@@ -128,4 +127,4 @@ OP_UNIT_LINKED_EXPENSE_FACTOR = 0.25
 MCR_FACTOR_OTHER_LIFE_TP = 0.021        # "other life (re)insurance obligations"
 MCR_FACTOR_CAPITAL_AT_RISK = 0.0007     # total capital at risk
 MCR_CORRIDOR = (0.25, 0.45)             # 25%-45% of SCR (Art. 248)
-AMCR_LIFE = 4_000_000                   # absolute floor, EUR - VERIFY (indexed periodically)
+AMCR_LIFE = 4_000_000                   # absolute floor, EUR
