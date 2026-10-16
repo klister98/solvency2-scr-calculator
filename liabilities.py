@@ -1,5 +1,5 @@
 """
-Liability projection and best estimate liability (BEL).
+Liability projection and BEL.
 
 Two blocks of business:
   * term assurance  - premiums in, death claims out (mortality and lapse risk)
